@@ -1,0 +1,6 @@
+Id  Name          Burn  Acc  mSpeed
+1   R-77   Adder    7    410  2666
+2   R-77-1 Adder    10   410  2666
+3   R-27ER Alamo    8    333  2666
+4   R-26R Alamo-A   8    333  2666
+5   R-73 Archer     5    333  1667
