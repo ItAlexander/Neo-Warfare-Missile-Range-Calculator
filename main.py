@@ -19,7 +19,7 @@ def is_integer_num(n):
     return False
 
 print("Welcome To sashabronya's optimal firing range for missiles calculator. Original idea of realmadridmydestiny1.")
-print("version 0.2. All rights reserved. 2022")
+print("version 1.0 All rights reserved. 2022")
 print("----------------------------------------------------")
 mode = "c"
 mode = input("What mode to use(p-preset,c-custom)")
