@@ -51,7 +51,7 @@ if accTime < burn:
 else:
     conTime = 0
     accTime = burn
-mDisAc = ykmps * accTime + (mAkmps * accTime * accTime) / 2
+mDisAc = (mAkmps * accTime * accTime) / 2
 mDisCon = mVkmps * conTime
 mDis = mDisAc + mDisCon
 eDis = ekmps * burn
