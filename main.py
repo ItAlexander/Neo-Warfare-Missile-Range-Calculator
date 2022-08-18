@@ -33,10 +33,13 @@ if mode == "p":
   ar=list(map(str,lines[id].split(" ")))
   statArray = list(map(int,filter(is_integer_num,list(map(maybeMakeNumber, ar)))))
   burn, mAcc, mSpeed = statArray[1], statArray[2], statArray[3]
-if mode == "c":
+elif mode == "c":
     burn = (int)(input("What is the missile's burn time?: "))
     mAcc = (int)(input("What is the missile's acceleration?: "))
     mSpeed = (int)(input("What is the missile's maximum speed?: "))
+else:
+  print("Unknown mode")
+  quit()
 eSpeed = (int)(input("What's the enemy's speed: "))
 dirAng = (int)(input("What's target ditection relatively to you(angle from 0(towards you) to 180 (from you): "))
 ySpeed = (int)(input("What is your speed?: "))
@@ -51,7 +54,7 @@ if accTime < burn:
 else:
     conTime = 0
     accTime = burn
-mDisAc = (mAkmps * accTime * accTime) / 2
+mDisAc = ykmps*accTime (mAkmps * accTime * accTime) / 2
 mDisCon = mVkmps * conTime
 mDis = mDisAc + mDisCon
 eDis = ekmps * burn
