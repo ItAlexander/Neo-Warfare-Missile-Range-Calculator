@@ -24,11 +24,13 @@ print("----------------------------------------------------")
 mode = "c"
 mode = input("What mode to use(p-preset,c-custom)")
 if mode == "p":
+  print("----------------------------------------------------")
   with open("missiles.txt", "r") as f:
     i=0
     lines = f.readlines()
     for line in lines:
         print(line)
+  print("----------------------------------------------------")
   id=(int)(input("Missile id: "))
   ar=list(map(str,lines[id].split(" ")))
   statArray = list(map(int,filter(is_integer_num,list(map(maybeMakeNumber, ar)))))
@@ -48,16 +50,18 @@ ykmps = ySpeed * 1.852 / 3600
 mAkmps = (mAcc * 1.852) / 3600
 mVkmps = (mSpeed * 1.852) / 3600
 ekmps = (eSpeed * 1.852) / 3600
-accTime = mVkmps / mAkmps
+accTime = (mVkmps-ykmps) / mAkmps
 if accTime < burn:
     conTime = burn - accTime
 else:
     conTime = 0
     accTime = burn
-mDisAc = ykmps*accTime (mAkmps * accTime * accTime) / 2
+mDisAc = ykmps*accTime + (mAkmps * accTime * accTime) / 2
 mDisCon = mVkmps * conTime
 mDis = mDisAc + mDisCon
+print("Missile distance: " + str(mDis))
 eDis = ekmps * burn
+print("Enemy distance: " + str(eDis))
 if dirAng == 180 or dirAng == 0:
     if dirAng == 180:
         dis = mDis - eDis
