@@ -59,9 +59,7 @@ else:
 mDisAc = ykmps*accTime + (mAkmps * accTime * accTime) / 2
 mDisCon = mVkmps * conTime
 mDis = mDisAc + mDisCon
-print("Missile distance: " + str(mDis))
 eDis = ekmps * burn
-print("Enemy distance: " + str(eDis))
 if dirAng == 180 or dirAng == 0:
     if dirAng == 180:
         dis = mDis - eDis
@@ -73,4 +71,4 @@ else:
     cAng = 180 - mAng - dirAng
     dis = (mDis * math.sin(math.radians(cAng))) / math.sin(
         math.radians(dirAng))
-print(dis)
+print("Max effective range: "+ str(dis))
