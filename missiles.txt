@@ -4,3 +4,4 @@ Id  Name          Burn  Acc  mSpeed
 3   R-27ER Alamo    8    333  2666
 4   R-26R Alamo-A   8    333  2666
 5   R-73 Archer     5    333  1667
+6   R-37M Axehead   20   220  3668
