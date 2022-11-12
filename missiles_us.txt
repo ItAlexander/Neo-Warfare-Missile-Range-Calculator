@@ -1,2 +1,3 @@
-Id  Name     Burn  Acc  mSpeed
-1   AMRAAM    10   266  2666
+Id  Name              Burn  Acc  mSpeed
+1   AIM-120D AMRAAM    10   266  2666
+2   AIM-9X Sidewinder 
