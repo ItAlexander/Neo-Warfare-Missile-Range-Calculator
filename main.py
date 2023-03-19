@@ -60,7 +60,6 @@ print("version 1.2 All rights reserved. 2023")
 with open("presets.txt", "r") as f:
         mls =list(map(str,f.readlines()[0].split(" ")))
 while True:
-    print(mls)
     print("----------------------------------------------------")
     mode = "c"
     mode = input("What mode to use(ru or us-preset,c-custom,q-quit): ")
