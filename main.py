@@ -1,5 +1,4 @@
 import math
-import dearpygui.dearpygui as dpg
 
 def maybeMakeNumber(s):  
     if not s:
@@ -45,44 +44,53 @@ def calcRange(burn, mAcc, mSpeed, ySpeed,eSpeed,dirAng):
             math.radians(dirAng))
     return dis
 
+def makeCalc(burn, mAcc, mSpeed):
+    eSpeed = (int)(input("What's the enemy's speed: "))
+    dirAng = (int)(input("What's target ditection relatively to you(angle from 0(towards you) to 180 (from you): "))
+    ySpeed = (int)(input("What is your speed?: "))
+    print("----------------------------------------------------")
+    print("Max effective range: "+ str(calcRange(burn, mAcc, mSpeed, ySpeed,eSpeed,dirAng)))
+
 print("Welcome To sashabronya's optimal firing range for missiles calculator. Original idea of realmadridmydestiny1.")
-print("version 1.0 All rights reserved. 2022")
-print("----------------------------------------------------")
-mode = "c"
-mode = input("What mode to use(ru or us-preset,c-custom): ")
-if mode == "ru":
-  print("----------------------------------------------------")
-  with open("missiles_ru.txt", "r") as f:
-    i=0
-    lines = f.readlines()
-    for line in lines:
-        print(line)
-  print("----------------------------------------------------")
-  id=(int)(input("Missile id: "))
-  ar=list(map(str,lines[id].split(" ")))
-  statArray = list(map(int,filter(is_integer_num,list(map(maybeMakeNumber, ar)))))
-  burn, mAcc, mSpeed = statArray[1], statArray[2], statArray[3]
-if mode == "us":
-  print("----------------------------------------------------")
-  with open("missiles_us.txt", "r") as f:
-    i=0
-    lines = f.readlines()
-    for line in lines:
-        print(line)
-  print("----------------------------------------------------")
-  id=(int)(input("Missile id: "))
-  ar=list(map(str,lines[id].split(" ")))
-  statArray = list(map(int,filter(is_integer_num,list(map(maybeMakeNumber, ar)))))
-  burn, mAcc, mSpeed = statArray[1], statArray[2], statArray[3]
-elif mode == "c":
-    burn = (int)(input("What is the missile's burn time?: "))
-    mAcc = (int)(input("What is the missile's acceleration?: "))
-    mSpeed = (int)(input("What is the missile's maximum speed?: "))
-else:
-  print("Unknown mode")
-  quit()
-eSpeed = (int)(input("What's the enemy's speed: "))
-dirAng = (int)(input("What's target ditection relatively to you(angle from 0(towards you) to 180 (from you): "))
-ySpeed = (int)(input("What is your speed?: "))
-print("----------------------------------------------------")
-print("Max effective range: "+ str(calcRange(burn, mAcc, mSpeed, ySpeed,eSpeed,dirAng)))
+print("version 1.1 All rights reserved. 2022")
+while True:
+    print("----------------------------------------------------")
+    mode = "c"
+    mode = input("What mode to use(ru or us-preset,c-custom,q-quit): ")
+    if mode == "ru":
+      print("----------------------------------------------------")
+      with open("missiles_ru.txt", "r") as f:
+        i=0
+        lines = f.readlines()
+        for line in lines:
+            print(line)
+      print("----------------------------------------------------")
+      id=(int)(input("Missile id: "))
+      ar=list(map(str,lines[id].split(" ")))
+      statArray = list(map(int,filter(is_integer_num,list(map(maybeMakeNumber, ar)))))
+      burn, mAcc, mSpeed = statArray[1], statArray[2], statArray[3]
+      makeCalc(burn, mAcc, mSpeed)
+    elif mode == "us":
+      print("----------------------------------------------------")
+      with open("missiles_us.txt", "r") as f:
+        i=0
+        lines = f.readlines()
+        for line in lines:
+            print(line)
+      print("----------------------------------------------------")
+      id=(int)(input("Missile id: "))
+      ar=list(map(str,lines[id].split(" ")))
+      statArray = list(map(int,filter(is_integer_num,list(map(maybeMakeNumber, ar)))))
+      burn, mAcc, mSpeed = statArray[1], statArray[2], statArray[3]
+      makeCalc(burn, mAcc, mSpeed)
+    elif mode == "c":
+        burn = (int)(input("What is the missile's burn time?: "))
+        mAcc = (int)(input("What is the missile's acceleration?: "))
+        mSpeed = (int)(input("What is the missile's maximum speed?: "))
+        makeCalc(burn, mAcc, mSpeed)
+    elif mode == "q":
+        print("Shutting down.")
+        quit();
+    else:
+      print("Unknown mode. Try again.")
+    
