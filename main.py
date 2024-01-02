@@ -46,39 +46,37 @@ def calcRange(burn, mAcc, mSpeed, ySpeed,eSpeed,dirAng):
 
 def makeCalc(burn, mAcc, mSpeed):
     eSpeed = (int)(input("What's the enemy's speed: "))
-    dirAng = (int)(input("What's target ditection relatively to you(angle from 0(towards you) to 180 (from you): "))
+    while True:
+        dirAng = (int)(input("What's target ditection relatively to you(angle from 0(towards you) to 180 (from you): "))
+        if dirAng>=0 and dirAng<=180:
+            break
+        print("Not valid direction angle.")
     ySpeed = (int)(input("What is your speed?: "))
     print("----------------------------------------------------")
     print("Max effective range: "+ str(calcRange(burn, mAcc, mSpeed, ySpeed,eSpeed,dirAng)))
 
 print("Welcome To sashabronya's optimal firing range for missiles calculator. Original idea of realmadridmydestiny1.")
-print("version 1.1 All rights reserved. 2022")
+print("version 1.2 All rights reserved. 2023")
+with open("presets.txt", "r") as f:
+        mls =list(map(str,f.readlines()[0].split(" ")))
 while True:
     print("----------------------------------------------------")
     mode = "c"
     mode = input("What mode to use(ru or us-preset,c-custom,q-quit): ")
-    if mode == "ru":
+    if mode in mls:
       print("----------------------------------------------------")
-      with open("missiles_ru.txt", "r") as f:
-        i=0
+      idc = 0
+      with open("missiles_" + mode + ".txt", "r") as f:
         lines = f.readlines()
         for line in lines:
+            idc+=1
             print(line)
       print("----------------------------------------------------")
-      id=(int)(input("Missile id: "))
-      ar=list(map(str,lines[id].split(" ")))
-      statArray = list(map(int,filter(is_integer_num,list(map(maybeMakeNumber, ar)))))
-      burn, mAcc, mSpeed = statArray[1], statArray[2], statArray[3]
-      makeCalc(burn, mAcc, mSpeed)
-    elif mode == "us":
-      print("----------------------------------------------------")
-      with open("missiles_us.txt", "r") as f:
-        i=0
-        lines = f.readlines()
-        for line in lines:
-            print(line)
-      print("----------------------------------------------------")
-      id=(int)(input("Missile id: "))
+      while True:
+        id=(int)(input("Missile id: "))
+        if id>0 and id<idc:
+            break
+        print("Not valid ID.")
       ar=list(map(str,lines[id].split(" ")))
       statArray = list(map(int,filter(is_integer_num,list(map(maybeMakeNumber, ar)))))
       burn, mAcc, mSpeed = statArray[1], statArray[2], statArray[3]
@@ -92,5 +90,4 @@ while True:
         print("Shutting down.")
         quit();
     else:
-      print("Unknown mode. Try again.")
-    
+        print("Unknown mode. Try again.")
